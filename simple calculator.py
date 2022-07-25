@@ -14,8 +14,13 @@ displayEntry = Entry(window, text="display", bg="white", width=7, borderwidth=1,
 displayEntry.place(x=8, y=8)
 
 #functions
+#symbols that user adds to display
+displaySymbolsList = []
+
 def btnClicked(number):
      displayEntry.insert(END, number)
+     displaySymbolsList.append(number)
+     print(displaySymbolsList)
 
 def btnAddFunction():
     print("b")
@@ -26,14 +31,61 @@ def btnMiniFunction():
 def btnMultipleFunction():
     print("d")
 
-def btnFunctionDelete():
-    displayEntry.delete(0, "end")
-
-def btnFunctionResult():
-    displayEntry.delete(0,"end")
-
 def btnFunctionDivide():
     print("df")
+
+def btnFunctionDelete():
+    displayEntry.delete(0, "end")
+    displaySymbolsList.clear()
+
+def btnFunctionResult():
+    displayEntry.delete(0, "end")
+
+    symbolsList = ["+","-","x","/"]
+    firstnumList = []
+
+    while True:
+        for i in (displaySymbolsList):
+            firstnumList.append(i)
+            if i in symbolsList:
+                break
+
+    displayEntry.insert(END, firstnumList)
+    # num1List = []
+    # num2List = []
+    # symbol = []
+    #
+    # for i in (displaySymbolsList):
+    #     if i in symbolsList:
+    #         symbol.append(i)
+    #         break
+    #     else:
+    #         num1List.append(i)
+    #
+    # r = len(displaySymbolsList)
+    # while r <= len(displaySymbolsList):
+    #     if displaySymbolsList(r) in symbolsList:
+    #         break
+    #     else:
+    #         num2List.append(r)
+    #     r = r - 1
+    #
+    # num1List = int(num1List)
+    # num2List = int(num2List)
+    #
+    # if symbol == "+":
+    #     result = num1List + num2List
+    # if symbol == "-":
+    #     result = num1List - num2List
+    # if symbol == "x":
+    #     result = num1List * num2List
+    # if symbol == "/":
+    #     result = num1List / num2List
+    # displayEntry.insert(END, "sdsd")
+    # displaySymbolsList.clear()
+    # num1List.clear()
+    # num2List.clear()
+    #getting the first number until a mathematical symbol shown
 
 
 #canvas all the button exists on the calculator
