@@ -22,70 +22,52 @@ def btnClicked(number):
      displaySymbolsList.append(number)
      print(displaySymbolsList)
 
-def btnAddFunction():
-    print("b")
-
-def btnMiniFunction():
-    print("c")
-
-def btnMultipleFunction():
-    print("d")
-
-def btnFunctionDivide():
-    print("df")
-
 def btnFunctionDelete():
     displayEntry.delete(0, "end")
     displaySymbolsList.clear()
 
 def btnFunctionResult():
     displayEntry.delete(0, "end")
+    symbolList = ['+','-','x','/']
+    firstNumber = ""
+    secondNumber = ""
+    symbolindex = ""
+    symbolFromList = ""
+    resultNumber = 0
 
-    symbolsList = ["+","-","x","/"]
-    firstnumList = []
+    lenl1 = len(displaySymbolsList)
 
-    while True:
-        for i in (displaySymbolsList):
-            firstnumList.append(i)
-            if i in symbolsList:
-                break
+    #getting the first number to the variable
+    x = 0
+    while x < lenl1:
+        if displaySymbolsList[x] not in symbolList:
+            firstNumber = firstNumber + displaySymbolsList[x]
+        else:
+            symbolindex = x
+            symbolFromList = displaySymbolsList[symbolindex]
+            break
+        x=x+1
 
-    displayEntry.insert(END, firstnumList)
-    # num1List = []
-    # num2List = []
-    # symbol = []
-    #
-    # for i in (displaySymbolsList):
-    #     if i in symbolsList:
-    #         symbol.append(i)
-    #         break
-    #     else:
-    #         num1List.append(i)
-    #
-    # r = len(displaySymbolsList)
-    # while r <= len(displaySymbolsList):
-    #     if displaySymbolsList(r) in symbolsList:
-    #         break
-    #     else:
-    #         num2List.append(r)
-    #     r = r - 1
-    #
-    # num1List = int(num1List)
-    # num2List = int(num2List)
-    #
-    # if symbol == "+":
-    #     result = num1List + num2List
-    # if symbol == "-":
-    #     result = num1List - num2List
-    # if symbol == "x":
-    #     result = num1List * num2List
-    # if symbol == "/":
-    #     result = num1List / num2List
-    # displayEntry.insert(END, "sdsd")
-    # displaySymbolsList.clear()
-    # num1List.clear()
-    # num2List.clear()
-    #getting the first number until a mathematical symbol shown
+    #getting the second number to the variable
+    y = symbolindex + 1
+    while y <lenl1:
+        secondNumber = secondNumber + displaySymbolsList[y]
+        y= y+1
+
+    print(firstNumber)
+    print(secondNumber)
+    if symbolFromList == "+":
+        resultNumber = int(firstNumber) + int(secondNumber)
+    if symbolFromList == "-":
+        resultNumber = int(firstNumber) - int(secondNumber)
+    if symbolFromList == "x":
+        resultNumber = int(firstNumber) * int(secondNumber)
+    if symbolFromList == "/":
+        resultNumber = int(firstNumber) / int(secondNumber)
+
+    print(resultNumber)
+    #displaying the result on the entryfield
+    displayEntry.insert(END, str(resultNumber))
 
 
 #canvas all the button exists on the calculator
